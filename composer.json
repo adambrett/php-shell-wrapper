@@ -13,6 +13,12 @@
     },
     "require-dev": {
         "phing/phing": "*@dev",
+        "squizlabs/php_codesniffer": "*@dev",
+        "pdepend/pdepend": "*@dev",
+        "phpmd/phpmd": "*@dev",
+        "sebastian/phpcpd": "*@dev",
+        "phploc/phploc": "*@dev",
+        "covex-nn/phpcb": "*@dev",
         "phpunit/phpunit": "*@dev",
         "mockery/mockery": "*@dev",
         "fzaninotto/faker": "*@dev"
