@@ -107,7 +107,7 @@ use AdamBrett\ShellWrapper\Command\Builder as CommandBuilder;
 
 $shell = new Exec();
 $command = new CommandBuilder('phpunit');
-$command->addFlag('-v')
+$command->addFlag('v')
     ->addArgument('stop-on-failure')
     ->addArgument('configuration', '~/phpunit.xml')
     ->addParam('~/tests/TestCase.php');
