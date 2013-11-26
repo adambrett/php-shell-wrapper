@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Jobs ATS" default="build">
+<project name="Shell Wrapper" default="build">
     <property name="basedir" value="." />
 
     <target name="build" depends="prepare,composer,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb" />
