@@ -21,7 +21,8 @@
         "covex-nn/phpcb": "*@dev",
         "phpunit/phpunit": "*@dev",
         "mockery/mockery": "*@dev",
-        "fzaninotto/faker": "*@dev"
+        "fzaninotto/faker": "*@dev",
+        "league/phpunit-coverage-listener": "*@dev"
     },
     "autoload": {
         "classmap": ["src"]

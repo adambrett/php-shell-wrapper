@@ -14,6 +14,30 @@
     <listeners>
         <!-- close any expectations, report issues -->
         <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
+        <listener class="League\PHPUnitCoverageListener\Listener">
+            <arguments>
+                <array>
+                    <element key="printer">
+                      <object class="League\PHPUnitCoverageListener\Printer\StdOut"/>
+                    </element>
+                    <element key="hook">
+                      <object class="League\PHPUnitCoverageListener\Hook\Travis"/>
+                    </element>
+                    <element key="namespace">
+                        <string>AdamBrett\ShellWrapper</string>
+                    </element>
+                    <element key="repo_token">
+                        <string>cgEyV8fbUxsgFddGKhREeI6OHcHhTMzle</string>
+                    </element>
+                    <element key="target_url">
+                        <string>https://coveralls.io/api/v1/jobs</string>
+                    </element>
+                    <element key="coverage_dir">
+                        <string>./build/logs/</string>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
     </listeners>
 
     <filter>
@@ -30,7 +54,7 @@
         <log type="coverage-html" target="./build/coverage"
             charset="UTF-8" yui="true" highlight="true"
             lowUpperBound="35" highLowerBound="70"/>
-        <log type="coverage-clover" target="./build/logs/clover.xml"/>
+        <log type="coverage-clover" target="./build/logs/coverage.xml"/>
         <log type="junit" target="./build/logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>
