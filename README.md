@@ -1,7 +1,8 @@
 PHP Shell Wrapper
 =================
 
-[![Build Status](https://travis-ci.org/adambrett/php-shell-wapper.png?branch=master)](https://travis-ci.org/adambrett/php-shell-wapper)
+[![Build Status](https://travis-ci.org/adambrett/php-shell-wrapper.png?branch=master)](https://travis-ci.org/adambrett/php-shell-wrapper)
+[![Coverage Status](https://coveralls.io/repos/adambrett/php-shell-wrapper/badge.png)](https://coveralls.io/r/adambrett/php-shell-wrapper)
 
 PHP Shell Wrapper is a high level object oriented wrapper for accessing the [program execution functions](http://php.net/exec) in PHP.
 
@@ -227,7 +228,7 @@ Contributing
 Pull Requests
 -------------
 
-  1. Fork the php-shell-wapper repository
+  1. Fork the php-shell-wrapper repository
   2. Create a new branch for each feature or improvement
   3. Send a pull request from each feature branch to the **develop** branch
 
@@ -263,4 +264,4 @@ Adam Brett - http://twitter.com/sixdaysad - http://adamcod.es
 License
 =======
 
-php-shell-wapper is licensed under the BSD-3-Clause License - see the LICENSE file for details
+php-shell-wrapper is licensed under the BSD-3-Clause License - see the LICENSE file for details

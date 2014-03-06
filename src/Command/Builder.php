@@ -3,8 +3,9 @@
 namespace AdamBrett\ShellWrapper\Command;
 
 use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 
-class Builder
+class Builder extends AbstractCommand
 {
     protected $command;
 
