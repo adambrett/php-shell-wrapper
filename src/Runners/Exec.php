@@ -2,14 +2,14 @@
 
 namespace AdamBrett\ShellWrapper\Runners;
 
-use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 
 class Exec implements Runner, ReturnValue
 {
     protected $output;
     protected $returnValue;
 
-    public function run(Command $command)
+    public function run(AbstractCommand $command)
     {
         return exec($command, $this->output, $this->returnValue);
     }

@@ -3,6 +3,7 @@
 namespace AdamBrett\ShellWrapper\Tests;
 
 use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 use AdamBrett\ShellWrapper\Command\Argument;
 use AdamBrett\ShellWrapper\Command\Flag;
 use AdamBrett\ShellWrapper\Command\Param;
@@ -13,6 +14,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
     public function testCanCreateInstance()
     {
         $command = new Command('ls');
+        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\AbstractCommand', $command);
         $this->assertInstanceOf('AdamBrett\ShellWrapper\Command', $command);
     }
 

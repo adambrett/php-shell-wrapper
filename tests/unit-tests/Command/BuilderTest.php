@@ -3,12 +3,14 @@
 namespace AdamBrett\ShellWrapper\Tests\Command;
 
 use AdamBrett\ShellWrapper\Command\Builder as Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 
 class BuilderTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
         $command = new Command('ls');
+        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\AbstractCommand', $command);
         $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Builder', $command);
     }
 

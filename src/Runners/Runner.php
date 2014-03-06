@@ -2,9 +2,9 @@
 
 namespace AdamBrett\ShellWrapper\Runners;
 
-use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 
 interface Runner
 {
-    public function run(Command $command);
+    public function run(AbstractCommand $command);
 }
