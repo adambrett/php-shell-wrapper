@@ -25,6 +25,8 @@
         "league/phpunit-coverage-listener": "*@dev"
     },
     "autoload": {
-        "classmap": ["src"]
+        "psr-4": {
+            "AdamBrett\\ShellWrapper\\": "src"
+        }
     }
 }
