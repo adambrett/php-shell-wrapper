@@ -2,7 +2,7 @@
 
 namespace AdamBrett\ShellWrapper\Command;
 
-abstract class AbstractCommand
+abstract class AbstractCommand implements CommandInterface
 {
     protected $command;
 
