@@ -21,8 +21,7 @@
         "covex-nn/phpcb": "*@dev",
         "phpunit/phpunit": "*@dev",
         "mockery/mockery": "*@dev",
-        "fzaninotto/faker": "*@dev",
-        "league/phpunit-coverage-listener": "*@dev"
+        "fzaninotto/faker": "*@dev"
     },
     "autoload": {
         "psr-4": {

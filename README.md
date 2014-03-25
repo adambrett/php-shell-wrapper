@@ -2,7 +2,6 @@ PHP Shell Wrapper
 =================
 
 [![Build Status](https://travis-ci.org/adambrett/php-shell-wrapper.png?branch=master)](https://travis-ci.org/adambrett/php-shell-wrapper)
-[![Coverage Status](https://coveralls.io/repos/adambrett/php-shell-wrapper/badge.png)](https://coveralls.io/r/adambrett/php-shell-wrapper)
 
 PHP Shell Wrapper is a high level object oriented wrapper for accessing the [program execution functions](http://php.net/exec) in PHP.
 
