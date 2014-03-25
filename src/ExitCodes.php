@@ -26,6 +26,9 @@ class ExitCodes
         throw new \LogicException(__CLASS__ . ' is static and should not be instantiated');
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     public static function getDescription($exitCode)
     {
         switch ($exitCode) {

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8beb6eb373253cc302365fcef3a0ab98",
+    "hash": "94d6392de21df28979128dc04bb51be8",
     "packages": [
 
     ],
@@ -211,58 +211,6 @@
             "time": "2014-03-19 22:21:06"
         },
         {
-            "name": "phing/phing",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phingofficial/phing.git",
-                "reference": "63e7b2148a76be076d5e925e8fb8bf7414b3776b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phingofficial/phing/zipball/63e7b2148a76be076d5e925e8fb8bf7414b3776b",
-                "reference": "63e7b2148a76be076d5e925e8fb8bf7414b3776b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "bin": [
-                "bin/phing"
-            ],
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "classes/phing/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "classes"
-            ],
-            "license": [
-                "LGPL3"
-            ],
-            "authors": [
-                {
-                    "name": "Michiel Rook",
-                    "email": "mrook@php.net"
-                },
-                {
-                    "name": "Phing Community",
-                    "homepage": "http://www.phing.info/trac/wiki/Development/Contributors"
-                }
-            ],
-            "description": "PHing Is Not GNU make; it's a PHP project build system or build tool based on Apache Ant.",
-            "homepage": "http://www.phing.info/",
-            "keywords": [
-                "build",
-                "task",
-                "tool"
-            ],
-            "time": "2014-03-10 10:13:05"
-        },
-        {
             "name": "phploc/phploc",
             "version": "dev-master",
             "source": {
@@ -314,20 +262,20 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.0.0-beta.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "9fa33ece8e1ce4a8a4da3b3d9d8e927c9e434b1e"
+                "reference": "399c70b4fbe43613249d1f40f9ab9a12f97070dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/9fa33ece8e1ce4a8a4da3b3d9d8e927c9e434b1e",
-                "reference": "9fa33ece8e1ce4a8a4da3b3d9d8e927c9e434b1e",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/399c70b4fbe43613249d1f40f9ab9a12f97070dc",
+                "reference": "399c70b4fbe43613249d1f40f9ab9a12f97070dc",
                 "shasum": ""
             },
             "require": {
-                "pdepend/pdepend": "dev-master",
+                "pdepend/pdepend": "2.0.0.*@dev",
                 "php": ">=5.3.0"
             },
             "bin": [
@@ -354,7 +302,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of PHPMD handled with Composer.",
-            "time": "2014-03-13 15:11:29"
+            "time": "2014-03-19 22:06:20"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1505,7 +1453,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "phing/phing": 20,
         "squizlabs/php_codesniffer": 20,
         "pdepend/pdepend": 20,
         "phpmd/phpmd": 20,
