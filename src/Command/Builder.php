@@ -31,9 +31,9 @@ class Builder extends AbstractCommand
         return $this;
     }
 
-    public function addFlag($flag)
+    public function addFlag($flag, $value = null)
     {
-        $this->command->addFlag(new Flag($flag));
+        $this->command->addFlag(new Flag($flag, $value));
         return $this;
     }
 

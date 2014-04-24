@@ -70,6 +70,13 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('ls -ll', (string) $command, 'Command should have flags');
     }
 
+    public function testCanAddFlagValue()
+    {
+        $command = new Command('ls');
+        $command->addFlag('f', 'bar');
+        $this->assertEquals("ls -f 'bar'", (string) $command, 'Command should have flags');
+    }
+
     public function testCanAddMultipleFlag()
     {
         $command = new Command('ls');
