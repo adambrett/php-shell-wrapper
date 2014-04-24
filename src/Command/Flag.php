@@ -2,17 +2,7 @@
 
 namespace AdamBrett\ShellWrapper\Command;
 
-class Flag
+class Flag extends Value
 {
-    protected $flag;
-
-    public function __construct($flag)
-    {
-        $this->flag = $flag;
-    }
-
-    public function __toString()
-    {
-        return sprintf('-%s', $this->flag);
-    }
+    const PREFIX = '-';
 }

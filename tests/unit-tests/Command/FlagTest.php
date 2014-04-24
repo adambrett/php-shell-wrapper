@@ -8,13 +8,31 @@ class FlagTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $flag = new Flag('f');
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Flag', $flag);
+        $argument = new Flag('test', 'value');
+        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Flag', $argument);
     }
 
     public function testToString()
     {
-        $flag = new Flag('f');
-        $this->assertEquals('-f', (string) $flag, 'Flag should cast to a string');
+        $argument = new Flag('test', 'value');
+        $this->assertEquals("-test 'value'", (string) $argument, 'Flag should cast to a string');
+    }
+
+    public function testEscapesArgValue()
+    {
+        $argument = new Flag('test', '&&');
+        $this->assertEquals("-test '&&'", (string) $argument, 'Flag should be escaped');
+    }
+
+    public function testGetName()
+    {
+        $argument = new Flag('test', '&&');
+        $this->assertEquals('test', $argument->getName(), 'Flag name should be returned');
+    }
+
+    public function testEmptyFlag()
+    {
+        $argument = new Flag('test');
+        $this->assertEquals('-test', (string) $argument, 'Valueless arguments should be allowed');
     }
 }
