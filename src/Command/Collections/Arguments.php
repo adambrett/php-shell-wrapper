@@ -6,7 +6,7 @@ use AdamBrett\ShellWrapper\Command\Argument;
 
 class Arguments
 {
-    protected $arguments = [];
+    protected $arguments = array();
 
     public function __toString()
     {

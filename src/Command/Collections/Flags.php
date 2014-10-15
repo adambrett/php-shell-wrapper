@@ -6,7 +6,7 @@ use AdamBrett\ShellWrapper\Command\Flag;
 
 class Flags
 {
-    protected $flags = [];
+    protected $flags = array();
 
     public function __toString()
     {

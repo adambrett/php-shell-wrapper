@@ -6,7 +6,7 @@ use AdamBrett\ShellWrapper\Command\Param;
 
 class Params
 {
-    protected $params = [];
+    protected $params = array();
 
     public function __toString()
     {

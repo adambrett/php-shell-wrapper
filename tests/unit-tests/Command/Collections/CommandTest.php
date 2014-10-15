@@ -9,7 +9,8 @@ class CommandTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $commands = new Commands([]);
+        $commandsArray = array();
+        $commands = new Commands($commandsArray);
         $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Command', $commands);
     }
 
