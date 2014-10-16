@@ -9,32 +9,38 @@ class CommandTest extends \PHPUnit_Framework_TestCase
 {
     public function testCanCreateInstance()
     {
-        $commands = new Commands([]);
+        $commandsArray = array();
+        $commands = new Commands($commandsArray);
         $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Command', $commands);
     }
 
     public function testToStringAnd()
     {
-        $commands = new Commands([new Command('cd'), new Command('ls')]);
+        $commandsArray = array(new Command('cd'), new Command('ls'));
+        $commands = new Commands($commandsArray);
         $this->assertEquals('cd && ls', (string) $commands, 'Commands should be joined by and');
     }
 
     public function testToStringOr()
     {
-        $commands = new Commands([new Command('cd'), new Command('ls')], Commands::C_OR);
+        $commandsArray = array(new Command('cd'), new Command('ls'));
+        $commands = new Commands($commandsArray, Commands::C_OR);
         $this->assertEquals('cd || ls', (string) $commands, 'Commands should be joined by or');
     }
 
     public function testChainedCommands()
     {
-        $and = new Commands([new Command('cd'), new Command('ls')]);
-        $or = new Commands([$and, new Command('ls')], Commands::C_OR);
+        $andCommandsArray = array(new Command('cd'), new Command('ls'));
+        $and = new Commands($andCommandsArray);
+        $orCommandsArray = array($and, new Command('ls'));
+        $or = new Commands($orCommandsArray, Commands::C_OR);
         $this->assertEquals('cd && ls || ls', (string) $or, 'Commands should be joined by and and or');
     }
 
     public function testCommandsRequireCommandInterface()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $commands = new Commands(['ls']);
+        $commandsArray = array('ls');
+        $commands = new Commands($commandsArray);
     }
 }

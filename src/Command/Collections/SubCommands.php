@@ -6,7 +6,7 @@ use AdamBrett\ShellWrapper\Command\SubCommand;
 
 class SubCommands
 {
-    protected $subCommands = [];
+    protected $subCommands = array();
 
     public function __toString()
     {
