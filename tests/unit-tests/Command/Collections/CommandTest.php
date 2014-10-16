@@ -31,7 +31,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
     public function testChainedCommands()
     {
         $andCommandsArray = array(new Command('cd'), new Command('ls'));
-        $and = new Commands($commandsArray);
+        $and = new Commands($andCommandsArray);
         $orCommandsArray = array($and, new Command('ls'));
         $or = new Commands($orCommandsArray, Commands::C_OR);
         $this->assertEquals('cd && ls || ls', (string) $or, 'Commands should be joined by and and or');
