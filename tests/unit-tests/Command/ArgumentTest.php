@@ -35,4 +35,10 @@ class ArgumentTest extends \PHPUnit_Framework_TestCase
         $argument = new Argument('test');
         $this->assertEquals('--test', (string) $argument, 'Valueless arguments should be allowed');
     }
+
+    public function testMultipleOfSameName()
+    {
+        $param = new Argument('test', array('value1', 'value2'));
+        $this->assertEquals("--test 'value1' --test 'value2'", (string) $param, 'Mutiple arguments should be allowed');
+    }
 }

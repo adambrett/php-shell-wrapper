@@ -35,4 +35,10 @@ class FlagTest extends \PHPUnit_Framework_TestCase
         $argument = new Flag('test');
         $this->assertEquals('-test', (string) $argument, 'Valueless arguments should be allowed');
     }
+
+    public function testMultipleOfSameName()
+    {
+        $param = new Flag('test', array('value1', 'value2'));
+        $this->assertEquals("-test 'value1' -test 'value2'", (string) $param, 'Mutiple flags should be allowed');
+    }
 }
