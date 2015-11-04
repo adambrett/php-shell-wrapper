@@ -189,6 +189,20 @@ $shell->addArgument(new Argument($name, $value));
 
 `$value` will be automatically escaped behind the scenes, but `$name` will not, so make sure you never have user input in `$name`, or if you do, escape it yourself.
 
+If you want multiple arguments of the same name, then `$value` can be an array, like so:
+
+```php
+use AdamBrett\ShellWrapper\Command\Argument;
+
+$shell->addArgument(new Argument('exclude', ['.git*', 'cache'])); 
+```
+
+Which would result in the following:
+
+```bash
+somecommand --exclude '.git*' --exclude 'cache'
+```
+
 Flags
 -----
 
