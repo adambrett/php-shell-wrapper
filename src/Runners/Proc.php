@@ -517,7 +517,7 @@ class Proc implements Runner, ReturnValue
      * Executes a command returning the exitcode and capturing the stdout and stderr
      *
      * @param string $cmd
-     * @param array &$buffers
+     * @param array $buffers
      *  0 - StdIn contents to be passed to the command (optional)
      *  1 - StdOut contents returned by the command execution
      *  2 - StdOut contents returned by the command execution
@@ -527,7 +527,7 @@ class Proc implements Runner, ReturnValue
      * @param array $conf Additional options for proc_open()
      * @return int The exit code.
      */
-    public function exec($cmd, &$buffers, $callback = null, $cwd = null, $env = null, $conf = null)
+    public function exec($cmd, $buffers, $callback = null, $cwd = null, $env = null, $conf = null)
     {
         $this->reset();
 
