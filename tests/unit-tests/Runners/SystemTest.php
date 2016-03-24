@@ -17,14 +17,21 @@ class SystemTest extends \PHPUnit_Framework_TestCase
     public function testCanGetOutput()
     {
         $shell = new System();
-        $lastLine = $shell->run(new Command('ls 1>/dev/null'));
+
+        ob_start();
+        $lastLine = $shell->run(new Command('ls'));
+        ob_clean();
+
         $this->assertInternalType('string', $lastLine, 'The should be some output');
     }
 
     public function testCanGetReturnValue()
     {
         $shell = new System();
-        $shell->run(new Command('ls 1>/dev/null'));
+
+        ob_start();
+        $shell->run(new Command('ls'));
+        ob_clean();
 
         $this->assertEquals(ExitCodes::SUCCESS, $shell->getReturnValue(), 'The return should be a success');
         $this->assertInternalType('integer', $shell->getReturnValue(), 'The should be a return value');
