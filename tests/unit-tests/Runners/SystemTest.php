@@ -20,7 +20,7 @@ class SystemTest extends \PHPUnit_Framework_TestCase
 
         ob_start();
         $lastLine = $shell->run(new Command('ls'));
-        ob_clean();
+        ob_end_clean();
 
         $this->assertInternalType('string', $lastLine, 'The should be some output');
     }
@@ -31,7 +31,7 @@ class SystemTest extends \PHPUnit_Framework_TestCase
 
         ob_start();
         $shell->run(new Command('ls'));
-        ob_clean();
+        ob_end_clean();
 
         $this->assertEquals(ExitCodes::SUCCESS, $shell->getReturnValue(), 'The return should be a success');
         $this->assertInternalType('integer', $shell->getReturnValue(), 'The should be a return value');
