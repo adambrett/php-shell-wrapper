@@ -128,7 +128,7 @@ use AdamBrett\ShellWrapper\Command\Builder as CommandBuilder;
 
 $shell = new Exec();
 $command = new CommandBuilder('/usr/bin/jekyll');
-$command->addSubCommand('serve');
+$command->addSubCommand('serve')
     ->addArgument('watch');
 $shell->run($command);
 ```
