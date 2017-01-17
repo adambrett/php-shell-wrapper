@@ -87,4 +87,24 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command->addParam(new Param('/var'));
         $this->assertEquals("ls '/srv' '/var'", (string) $command, 'Command should have multiple options');
     }
+
+    public function testClone()
+    {
+        $command1 = new Command('ls');
+        $command1->addParam(new Param('/srv'));
+        $command1->addSubCommand(new SubCommand('foo'));
+        $command1->addArgument(new Argument('h'));
+
+        $command2 = clone $command1;
+        $command2->addParam(new Param('/var'));
+        $command2->addSubCommand(new SubCommand('bar'));
+        $command2->addArgument(new Argument('a'));
+
+        $this->assertEquals("ls foo --h '/srv'", (string) $command1, 'Original command must not be affect by cloned instances');
+        $this->assertEquals("ls foo bar --h --a '/srv' '/var'", (string) $command2, 'Cloned instances missing some options');
+
+        $command1 = new Command(new Command('ls'));
+        $command2 = clone $command1;
+        $this->assertEquals("ls", (string) $command2, 'Cloned instances missing some options');
+    }
 }

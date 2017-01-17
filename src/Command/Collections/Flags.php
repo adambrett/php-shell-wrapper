@@ -17,4 +17,17 @@ class Flags
     {
         $this->flags[(string) $flag] = $flag;
     }
+
+    /**
+     * Clone each Flag object in the internal list
+     */
+    public function __clone()
+    {
+        $clonedFlagsList = [];
+        foreach ($this->flags as $flag) {
+            $clonedFlagsList[] = clone $flag;
+        }
+
+        $this->flags = $clonedFlagsList;
+    }
 }
