@@ -22,6 +22,7 @@ class FakeRunnerTest extends \PHPUnit_Framework_TestCase
         $returnedValue = $runner->run(new Command('ls'));
 
         static::assertEquals(0, $returnedValue);
+        static::assertEquals(0, $runner->getReturnValue());
         static::assertEquals('ls', $runner->getExecutedCommand());
     }
 

@@ -6,7 +6,7 @@
  * Time: 12:07
  */
 
-namespace Runners;
+namespace AdamBrett\ShellWrapper\Runners;
 
 
 use AdamBrett\ShellWrapper\Command\CommandInterface;
