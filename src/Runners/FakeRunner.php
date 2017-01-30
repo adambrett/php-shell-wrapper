@@ -88,5 +88,4 @@ class FakeRunner implements Runner, ReturnValue, StandardOut, StandardError
     {
         return $this->executedCommand;
     }
-
 }

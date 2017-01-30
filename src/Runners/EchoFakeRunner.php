@@ -19,5 +19,4 @@ class EchoFakeRunner extends FakeRunner
         echo $command;
         return parent::run($command);
     }
-
 }
