@@ -146,12 +146,19 @@ Runners are paths directly in to the PHP [program execution functions](http://ph
 
 Some runners will also implement `\AdamBrett\ShellWrapper\Runners\ReturnValue`, but only where that is appropriate to the low level function.
 
+Some runners (marked *) only emulate command running. This feature useful for testing.
+
 Runner    | Returns               | Flush | getOutput | getReturnValue
 ----------|-----------------------|-------|-----------|---------------
 Exec      | Last Line             |       | x         | x
 Passthru  |                       | x     |           | x
 ShellExec | Full Output or `null` |       |           |
 System    | Last Line or `false`  | x     |           | x
+Dry*      | Exit code             |       | x         | x
+Fake*     | Exit code             |       | x         | x
+
+Use `FakeRunner` into unit tests for emulate command running. 
+Use `DryRunner` when your application gets --dry-run argument and there is need to only print the command 
 
 SubCommands
 -----------
