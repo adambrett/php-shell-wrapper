@@ -13,7 +13,7 @@ class DryRunnerTest extends \PHPUnit_Framework_TestCase
         $runner = new DryRunner();
         ob_start();
         $runner->run(new Command('ls'));
-        static::assertEquals("ls\r\n", ob_get_clean(), 'This runner must print command');
+        static::assertEquals("ls".PHP_EOL, ob_get_clean(), 'This runner must print command');
 
         static::assertEquals(0, $runner->getReturnValue());
     }

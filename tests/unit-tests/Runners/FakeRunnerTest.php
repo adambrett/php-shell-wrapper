@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sergey
- * Date: 30.01.17
- * Time: 1:41
- */
 
 namespace AdamBrett\ShellWrapper\Tests\Runners;
 

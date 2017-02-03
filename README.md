@@ -157,8 +157,8 @@ System    | Last Line or `false`  | x     |           | x
 Dry*      | Exit code             |       | x         | x
 Fake*     | Exit code             |       | x         | x
 
-Use `FakeRunner` into unit tests for emulate command running. 
-Use `DryRunner` when your application gets --dry-run argument and there is need to only print the command 
+You can use `FakeRunner` in your unit tests to emulate running a command.
+You can use `DryRunner `for debugging purposes, or when your application uses a `--dry-run` type argument and you want to echo the command rather than run it.
 
 SubCommands
 -----------

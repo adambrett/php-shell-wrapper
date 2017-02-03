@@ -9,7 +9,7 @@ class DryRunner extends FakeRunner
 {
     public function run(CommandInterface $command)
     {
-        echo $command."\r\n";
+        echo $command.PHP_EOL;
         return parent::run($command);
     }
 }
