@@ -23,7 +23,7 @@ class Flags
      */
     public function __clone()
     {
-        $clonedFlagsList = [];
+        $clonedFlagsList = array();
         foreach ($this->flags as $flag) {
             $clonedFlagsList[] = clone $flag;
         }

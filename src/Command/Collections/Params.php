@@ -23,7 +23,7 @@ class Params
      */
     public function __clone()
     {
-        $clonedParamsList = [];
+        $clonedParamsList = array();
         foreach ($this->params as $Param) {
             $clonedParamsList[] = clone $Param;
         }

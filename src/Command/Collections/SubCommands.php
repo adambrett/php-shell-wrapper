@@ -23,7 +23,7 @@ class SubCommands
      */
     public function __clone()
     {
-        $clonedSubCommandsList = [];
+        $clonedSubCommandsList = array();
         foreach ($this->subCommands as $subCommand) {
             $clonedSubCommandsList[] = clone $subCommand;
         }
