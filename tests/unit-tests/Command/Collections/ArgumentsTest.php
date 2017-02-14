@@ -57,7 +57,16 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
         $argumentList2->addArgument(new Argument('test', 'value2'));
         $argumentList2->addArgument(new Argument('test2', 'value'));
 
-        $this->assertEquals("--test 'value'", (string) $argumentList1, 'Original collection must not be affect by cloned instances');
-        $this->assertEquals("--test 'value2' --test2 'value'", (string) $argumentList2, 'Cloned instances missing some options');
+        $this->assertEquals(
+            "--test 'value'",
+            (string) $argumentList1,
+            'Original collection must not be affect by cloned instances'
+        );
+
+        $this->assertEquals(
+            "--test 'value2' --test2 'value'",
+            (string) $argumentList2,
+            'Cloned instances missing some options'
+        );
     }
 }

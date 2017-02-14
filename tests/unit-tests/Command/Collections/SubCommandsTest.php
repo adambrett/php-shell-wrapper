@@ -44,7 +44,11 @@ class SubCommandsTest extends \PHPUnit_Framework_TestCase
         $subCommandList2 = clone $subCommandList1;
         $subCommandList2->addSubCommand(new SubCommand('test'));
 
-        $this->assertEquals('test', (string) $subCommandList1, 'Original collection must not be affect by cloned instances');
+        $this->assertEquals(
+            'test',
+            (string) $subCommandList1,
+            'Original collection must not be affect by cloned instances'
+        );
         $this->assertEquals('test test', (string) $subCommandList2, 'Cloned instances missing some options');
     }
 }

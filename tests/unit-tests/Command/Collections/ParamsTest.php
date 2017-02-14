@@ -44,7 +44,12 @@ class ParamsTest extends \PHPUnit_Framework_TestCase
         $paramList2 = clone $paramList1;
         $paramList2->addParam(new Param('test'));
 
-        $this->assertEquals("'test'", (string) $paramList1, 'Original collection must not be affect by cloned instances');
+        $this->assertEquals(
+            "'test'",
+            (string) $paramList1,
+            'Original collection must not be affect by cloned instances'
+        );
+
         $this->assertEquals("'test' 'test'", (string) $paramList2, 'Cloned instances missing some options');
     }
 }

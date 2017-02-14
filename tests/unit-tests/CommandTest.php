@@ -100,8 +100,17 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command2->addSubCommand(new SubCommand('bar'));
         $command2->addArgument(new Argument('a'));
 
-        $this->assertEquals("ls foo --h '/srv'", (string) $command1, 'Original command must not be affect by cloned instances');
-        $this->assertEquals("ls foo bar --h --a '/srv' '/var'", (string) $command2, 'Cloned instances missing some options');
+        $this->assertEquals(
+            "ls foo --h '/srv'",
+            (string) $command1,
+            'Original command must not be affect by cloned instances'
+        );
+
+        $this->assertEquals(
+            "ls foo bar --h --a '/srv' '/var'",
+            (string) $command2,
+            'Cloned instances missing some options'
+        );
 
         $command1 = new Command(new Command('ls'));
         $command2 = clone $command1;
