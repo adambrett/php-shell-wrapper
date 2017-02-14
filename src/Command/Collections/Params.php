@@ -19,8 +19,8 @@ class Params
     public function __clone()
     {
         $clonedParamsList = array();
-        foreach ($this->params as $Param) {
-            $clonedParamsList[] = clone $Param;
+        foreach ($this->params as $param) {
+            $clonedParamsList[] = clone $param;
         }
 
         $this->params = $clonedParamsList;
