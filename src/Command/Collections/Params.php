@@ -13,11 +13,6 @@ class Params
         return join(' ', $this->params);
     }
 
-    public function addParam(Param $param)
-    {
-        $this->params[] = $param;
-    }
-
     /**
      * Clone each Params object in the internal list
      */
@@ -29,5 +24,10 @@ class Params
         }
 
         $this->params = $clonedParamsList;
+    }
+
+    public function addParam(Param $param)
+    {
+        $this->params[] = $param;
     }
 }
