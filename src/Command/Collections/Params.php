@@ -13,9 +13,6 @@ class Params
         return join(' ', $this->params);
     }
 
-    /**
-     * Clone each Params object in the internal list
-     */
     public function __clone()
     {
         $clonedParamsList = array();

@@ -9,9 +9,6 @@ class SubCommand extends AbstractCommand
         return (string) $this->command;
     }
 
-    /**
-     * To clone internal command instance to avoid error
-     */
     public function __clone()
     {
         if ($this->command instanceof CommandInterface) {

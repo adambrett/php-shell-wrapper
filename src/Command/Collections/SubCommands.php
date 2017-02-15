@@ -18,9 +18,6 @@ class SubCommands
         $this->subCommands[] = $subCommand;
     }
     
-    /**
-     * Clone each SubCommand object in the internal list
-     */
     public function __clone()
     {
         $subCommandsList = array();

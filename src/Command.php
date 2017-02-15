@@ -74,9 +74,6 @@ class Command extends Command\AbstractCommand
         return $string;
     }
 
-    /**
-     * To clone internal command instance to avoid error
-     */
     public function __clone()
     {
         if ($this->command instanceof CommandInterface) {

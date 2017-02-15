@@ -18,9 +18,6 @@ class Flags
         $this->flags[(string) $flag] = $flag;
     }
 
-    /**
-     * Clone each Flag object in the internal list
-     */
     public function __clone()
     {
         $clonedFlagsList = array();
