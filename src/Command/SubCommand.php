@@ -6,6 +6,13 @@ class SubCommand extends AbstractCommand
 {
     public function __toString()
     {
-        return $this->command;
+        return (string) $this->command;
+    }
+
+    public function __clone()
+    {
+        if ($this->command instanceof CommandInterface) {
+            $this->command = clone $this->command;
+        }
     }
 }

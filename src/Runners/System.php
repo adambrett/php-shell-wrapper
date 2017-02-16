@@ -10,6 +10,7 @@ class System implements Runner, ReturnValue
 
     public function run(CommandInterface $command)
     {
+        $this->returnValue = null;
         return system((string) $command, $this->returnValue);
     }
 

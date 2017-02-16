@@ -10,6 +10,7 @@ class Passthru implements Runner, ReturnValue
 
     public function run(CommandInterface $command)
     {
+        $this->returnValue = null;
         return passthru((string) $command, $this->returnValue);
     }
 

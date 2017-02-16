@@ -19,6 +19,31 @@ class ExitCodesTest extends \PHPUnit_Framework_TestCase
             ExitCodes::getDescription(ExitCodes::SUCCESS),
             'A string should be returned'
         );
+        $this->assertInternalType(
+            'string',
+            ExitCodes::getDescription(ExitCodes::GENERAL_ERROR),
+            'A string should be returned'
+        );
+        $this->assertInternalType(
+            'string',
+            ExitCodes::getDescription(ExitCodes::BUILTIN_MISUSE),
+            'A string should be returned'
+        );
+        $this->assertInternalType(
+            'string',
+            ExitCodes::getDescription(ExitCodes::PERMISSION_ERROR),
+            'A string should be returned'
+        );
+        $this->assertInternalType(
+            'string',
+            ExitCodes::getDescription(ExitCodes::COMMAND_NOT_FOUND),
+            'A string should be returned'
+        );
+        $this->assertInternalType(
+            'string',
+            ExitCodes::getDescription(ExitCodes::USER_TERMINATED),
+            'A string should be returned'
+        );
     }
 
     public function test3To125AreUnknownOrCustom()

@@ -11,6 +11,8 @@ class Exec implements Runner, ReturnValue
 
     public function run(CommandInterface $command)
     {
+        $this->output = null;
+        $this->returnValue = null;
         return exec($command, $this->output, $this->returnValue);
     }
 

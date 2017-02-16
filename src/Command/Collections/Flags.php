@@ -17,4 +17,14 @@ class Flags
     {
         $this->flags[(string) $flag] = $flag;
     }
+
+    public function __clone()
+    {
+        $clonedFlagsList = array();
+        foreach ($this->flags as $flag) {
+            $clonedFlagsList[] = clone $flag;
+        }
+
+        $this->flags = $clonedFlagsList;
+    }
 }

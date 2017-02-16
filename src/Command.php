@@ -3,6 +3,8 @@
 namespace AdamBrett\ShellWrapper;
 
 use AdamBrett\ShellWrapper\Command\Argument;
+use AdamBrett\ShellWrapper\Command\Collections\Arguments;
+use AdamBrett\ShellWrapper\Command\CommandInterface;
 use AdamBrett\ShellWrapper\Command\Flag;
 use AdamBrett\ShellWrapper\Command\Param;
 use AdamBrett\ShellWrapper\Command\SubCommand;
@@ -70,5 +72,17 @@ class Command extends Command\AbstractCommand
         }
 
         return $string;
+    }
+
+    public function __clone()
+    {
+        if ($this->command instanceof CommandInterface) {
+            $this->command = clone $this->command;
+        }
+
+        $this->arguments = clone $this->arguments;
+        $this->flags = clone $this->flags;
+        $this->params = clone $this->params;
+        $this->subCommands = clone $this->subCommands;
     }
 }

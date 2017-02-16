@@ -13,6 +13,16 @@ class Params
         return join(' ', $this->params);
     }
 
+    public function __clone()
+    {
+        $clonedParamsList = array();
+        foreach ($this->params as $param) {
+            $clonedParamsList[] = clone $param;
+        }
+
+        $this->params = $clonedParamsList;
+    }
+
     public function addParam(Param $param)
     {
         $this->params[] = $param;
