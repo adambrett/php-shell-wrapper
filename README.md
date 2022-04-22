@@ -276,11 +276,6 @@ Creating Builds
 
 Some build tools are included via composer if required, you can run them using .  `./vendor/bin/phing` from the root of the project.  The output will be stored in `./build` and will include code coverage and code browser output.  Inspect the contents of `build.xml` to see what's happening underneath.
 
-Authors
-=======
-
-Adam Brett - http://twitter.com/sixdaysad - http://adamcod.es
-
 License
 =======
 
