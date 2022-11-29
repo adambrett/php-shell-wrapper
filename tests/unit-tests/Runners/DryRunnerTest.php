@@ -1,12 +1,14 @@
 <?php
 
-namespace AdamBrett\ShellWrapper\Tests\Runners;
+declare(strict_types=1);
 
+namespace AdamBrett\ShellWrapper\Tests\Runners;
 
 use AdamBrett\ShellWrapper\Command;
 use AdamBrett\ShellWrapper\Runners\DryRunner;
+use PHPUnit\Framework\TestCase;
 
-class DryRunnerTest extends \PHPUnit_Framework_TestCase
+class DryRunnerTest extends TestCase
 {
     public function testRun()
     {

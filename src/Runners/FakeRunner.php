@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Runners;
 
 use AdamBrett\ShellWrapper\Command\CommandInterface;
@@ -7,43 +9,37 @@ use AdamBrett\ShellWrapper\ExitCodes;
 
 class FakeRunner implements Runner, ReturnValue, StandardOut, StandardError
 {
-    private $outputValue;
+    private string|null $executedCommand;
 
-    private $standardOutput;
-
-    private $standardError;
-
-    private $executedCommand;
-
-    public function __construct($outputValue = ExitCodes::SUCCESS, $standardOutput = null, $standardError = null)
-    {
-        $this->outputValue = $outputValue;
-        $this->standardOutput = $standardOutput;
-        $this->standardError = $standardError;
+    public function __construct(
+        private readonly int $outputValue = ExitCodes::SUCCESS,
+        private readonly string|null $standardOutput = null,
+        private readonly string|null $standardError = null
+    ) {
     }
 
-    public function run(CommandInterface $command)
+    public function run(CommandInterface $command): mixed
     {
-        $this->executedCommand = (string) $command;
+        $this->executedCommand = (string)$command;
         return $this->outputValue;
     }
 
-    public function getReturnValue()
+    public function getReturnValue(): int
     {
         return $this->outputValue;
     }
 
-    public function getStandardError()
+    public function getStandardError(): mixed
     {
         return $this->standardError;
     }
 
-    public function getStandardOut()
+    public function getStandardOut(): ?string
     {
         return $this->standardOutput;
     }
 
-    public function getExecutedCommand()
+    public function getExecutedCommand(): ?string
     {
         return $this->executedCommand;
     }

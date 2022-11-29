@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command\Collections;
 
 use AdamBrett\ShellWrapper\Command\Param;
 
 class Params
 {
-    protected $params = array();
+    protected array $params = [];
 
     public function __toString()
     {
@@ -15,15 +17,15 @@ class Params
 
     public function __clone()
     {
-        $clonedParamsList = array();
+        $clonedParams = [];
         foreach ($this->params as $param) {
-            $clonedParamsList[] = clone $param;
+            $clonedParams[] = clone $param;
         }
 
-        $this->params = $clonedParamsList;
+        $this->params = $clonedParams;
     }
 
-    public function addParam(Param $param)
+    public function addParam(Param $param): void
     {
         $this->params[] = $param;
     }

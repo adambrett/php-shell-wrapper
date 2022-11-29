@@ -1,35 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper;
+
+use LogicException;
 
 class ExitCodes
 {
-    const SUCCESS = 0;
+    public const SUCCESS = 0;
 
-    const GENERAL_ERROR = 1;
-    const BUILTIN_MISUSE = 2;
+    public const GENERAL_ERROR = 1;
+    public const BUILTIN_MISUSE = 2;
 
-    const PERMISSION_ERROR = 126;
-    const COMMAND_NOT_FOUND = 127;
+    public const PERMISSION_ERROR = 126;
+    public const COMMAND_NOT_FOUND = 127;
 
-    const INVALID_EXIT_ARG = 128;
+    public const INVALID_EXIT_ARG = 128;
 
-    const FATAL_ERROR_START = 129;
-    const FATAL_ERROR_END = 255;
+    public const FATAL_ERROR_START = 129;
+    public const FATAL_ERROR_END = 255;
 
-    const USER_TERMINATED = 130;
+    public const USER_TERMINATED = 130;
 
-    const OUT_OF_RANGE = 255;
+    public const OUT_OF_RANGE = 255;
 
     public function __construct()
     {
-        throw new \LogicException(__CLASS__ . ' is static and should not be instantiated');
+        throw new LogicException(__CLASS__ . ' is static and should not be instantiated');
     }
 
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public static function getDescription($exitCode)
+    public static function getDescription($exitCode): string
     {
         switch ($exitCode) {
             case self::SUCCESS:

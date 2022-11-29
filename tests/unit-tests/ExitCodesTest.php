@@ -1,46 +1,43 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests;
 
 use AdamBrett\ShellWrapper\ExitCodes;
+use PHPUnit\Framework\TestCase;
 
-class ExitCodesTest extends \PHPUnit_Framework_TestCase
+class ExitCodesTest extends TestCase
 {
     public function testCannotCreateInstance()
     {
-        $this->setExpectedException('\LogicException');
+        $this->expectException(\LogicException::class);
         new ExitCodes();
     }
 
     public function testGetDescriptionReturnsString()
     {
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::SUCCESS),
             'A string should be returned'
         );
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::GENERAL_ERROR),
             'A string should be returned'
         );
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::BUILTIN_MISUSE),
             'A string should be returned'
         );
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::PERMISSION_ERROR),
             'A string should be returned'
         );
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::COMMAND_NOT_FOUND),
             'A string should be returned'
         );
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::USER_TERMINATED),
             'A string should be returned'
         );

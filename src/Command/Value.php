@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command;
 
 abstract class Value
 {
-    protected $name;
-    protected $values;
+    protected string $name;
+    protected array|null $values;
 
-    public function __construct($name, $values = null)
+    public function __construct(string $name, array|string|null $values = null)
     {
         $this->name = $name;
 
         if (!is_array($values) && $values !== null) {
-            $values = array($values);
+            $values = [$values];
         }
 
         $this->values = $values;
@@ -27,15 +29,15 @@ abstract class Value
         return $this->getValuesAsString();
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    protected function getValuesAsString()
+    protected function getValuesAsString(): string
     {
         $values = array_map('escapeshellarg', $this->values);
         $prefix = sprintf('%s%s ', static::PREFIX, $this->name);
         return $prefix . join(" ${prefix}", $values);
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

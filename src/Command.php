@@ -1,34 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper;
 
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 use AdamBrett\ShellWrapper\Command\Argument;
 use AdamBrett\ShellWrapper\Command\Collections\Arguments;
-use AdamBrett\ShellWrapper\Command\CommandInterface;
-use AdamBrett\ShellWrapper\Command\Flag;
+use AdamBrett\ShellWrapper\Command\Collections\Flags;
+use AdamBrett\ShellWrapper\Command\Collections\Params;
+use AdamBrett\ShellWrapper\Command\Collections\SubCommands;
 use AdamBrett\ShellWrapper\Command\Param;
 use AdamBrett\ShellWrapper\Command\SubCommand;
 
-use AdamBrett\ShellWrapper\Command\Collections\Arguments as ArgumentList;
-use AdamBrett\ShellWrapper\Command\Collections\Flags as FlagList;
-use AdamBrett\ShellWrapper\Command\Collections\Params as ParamList;
-use AdamBrett\ShellWrapper\Command\Collections\SubCommands as SubCommandList;
-
-class Command extends Command\AbstractCommand
+class Command extends AbstractCommand
 {
-    protected $arguments;
-    protected $flags;
-    protected $params;
-    protected $subCommands;
+    protected Arguments $arguments;
+    protected Flags $flags;
+    protected Params $params;
+    protected SubCommands $subCommands;
 
-    public function __construct($command)
+    public function __construct(string $command)
     {
         parent::__construct($command);
 
-        $this->arguments = new ArgumentList();
-        $this->flags = new FlagList();
-        $this->params = new ParamList();
-        $this->subCommands = new SubCommandList();
+        $this->arguments = new Arguments();
+        $this->flags = new Flags();
+        $this->params = new Params();
+        $this->subCommands = new SubCommands();
     }
 
     public function __toString()
@@ -43,29 +42,9 @@ class Command extends Command\AbstractCommand
         );
     }
 
-    public function addSubCommand(SubCommand $command)
+    private function pad($string): string
     {
-        $this->subCommands->addSubCommand($command);
-    }
-
-    public function addParam(Param $param)
-    {
-        $this->params->addParam($param);
-    }
-
-    public function addArgument(Argument $argument)
-    {
-        $this->arguments->addArgument($argument);
-    }
-
-    public function addFlag($name)
-    {
-        $this->flags->addFlag($name);
-    }
-
-    private function pad($string)
-    {
-        $string = (string) $string;
+        $string = (string)$string;
 
         if (!empty($string)) {
             return " $string";
@@ -74,12 +53,28 @@ class Command extends Command\AbstractCommand
         return $string;
     }
 
+    public function addSubCommand(SubCommand $command): void
+    {
+        $this->subCommands->addSubCommand($command);
+    }
+
+    public function addParam(Param $param): void
+    {
+        $this->params->addParam($param);
+    }
+
+    public function addArgument(Argument $argument): void
+    {
+        $this->arguments->addArgument($argument);
+    }
+
+    public function addFlag($name): void
+    {
+        $this->flags->addFlag($name);
+    }
+
     public function __clone()
     {
-        if ($this->command instanceof CommandInterface) {
-            $this->command = clone $this->command;
-        }
-
         $this->arguments = clone $this->arguments;
         $this->flags = clone $this->flags;
         $this->params = clone $this->params;

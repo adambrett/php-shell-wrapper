@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests;
 
 use AdamBrett\ShellWrapper\Command;
-use AdamBrett\ShellWrapper\Command\AbstractCommand;
 use AdamBrett\ShellWrapper\Command\Argument;
 use AdamBrett\ShellWrapper\Command\Flag;
 use AdamBrett\ShellWrapper\Command\Param;
 use AdamBrett\ShellWrapper\Command\SubCommand;
+use PHPUnit\Framework\TestCase;
 
-class CommandTest extends \PHPUnit_Framework_TestCase
+class CommandTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -21,21 +23,21 @@ class CommandTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $command = new Command('ls');
-        $this->assertEquals('ls', (string) $command, 'Command should cast to a string');
+        $this->assertEquals('ls', (string)$command, 'Command should cast to a string');
     }
 
     public function testCanHaveSubCommand()
     {
         $command = new Command('ls');
         $command->addSubCommand(new SubCommand('ls'));
-        $this->assertEquals('ls ls', (string) $command, 'Command should have sub command');
+        $this->assertEquals('ls ls', (string)$command, 'Command should have sub command');
     }
 
     public function testCanAddArgument()
     {
         $command = new Command('ls');
         $command->addArgument(new Argument('test', 'value'));
-        $this->assertEquals("ls --test 'value'", (string) $command, 'Command should have arguments');
+        $this->assertEquals("ls --test 'value'", (string)$command, 'Command should have arguments');
     }
 
     public function testCanAddMultipleArguments()
@@ -45,7 +47,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command->addArgument(new Argument('test2', 'value2'));
         $this->assertEquals(
             "ls --test 'value' --test2 'value2'",
-            (string) $command,
+            (string)$command,
             'Command should have multiple arguments'
         );
     }
@@ -55,14 +57,14 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command = new Command('ls');
         $command->addArgument(new Argument('test', 'value'));
         $command->addArgument(new Argument('test', 'value2'));
-        $this->assertEquals("ls --test 'value2'", (string) $command, 'Arguments should be overwritten');
+        $this->assertEquals("ls --test 'value2'", (string)$command, 'Arguments should be overwritten');
     }
 
     public function testCanAddFlag()
     {
         $command = new Command('ls');
         $command->addFlag(new Flag('ll'));
-        $this->assertEquals('ls -ll', (string) $command, 'Command should have flags');
+        $this->assertEquals('ls -ll', (string)$command, 'Command should have flags');
     }
 
     public function testCanAddMultipleFlag()
@@ -70,14 +72,14 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command = new Command('ls');
         $command->addFlag(new Flag('l'));
         $command->addFlag(new Flag('a'));
-        $this->assertEquals('ls -l -a', (string) $command, 'Command should have multiple flags');
+        $this->assertEquals('ls -l -a', (string)$command, 'Command should have multiple flags');
     }
 
     public function testCanAddParam()
     {
         $command = new Command('ls');
         $command->addParam(new Param('/'));
-        $this->assertEquals("ls '/'", (string) $command, 'Command should have an option');
+        $this->assertEquals("ls '/'", (string)$command, 'Command should have an option');
     }
 
     public function testCanAddMultipleParams()
@@ -85,7 +87,7 @@ class CommandTest extends \PHPUnit_Framework_TestCase
         $command = new Command('ls');
         $command->addParam(new Param('/srv'));
         $command->addParam(new Param('/var'));
-        $this->assertEquals("ls '/srv' '/var'", (string) $command, 'Command should have multiple options');
+        $this->assertEquals("ls '/srv' '/var'", (string)$command, 'Command should have multiple options');
     }
 
     public function testClone()
@@ -102,18 +104,18 @@ class CommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "ls foo --h '/srv'",
-            (string) $command1,
+            (string)$command1,
             'Original command must not be affect by cloned instances'
         );
 
         $this->assertEquals(
             "ls foo bar --h --a '/srv' '/var'",
-            (string) $command2,
+            (string)$command2,
             'Cloned instances missing some options'
         );
 
-        $command1 = new Command(new Command('ls'));
+        $command1 = new Command('ls');
         $command2 = clone $command1;
-        $this->assertEquals("ls", (string) $command2, 'Cloned instances missing some options');
+        $this->assertEquals("ls", (string)$command2, 'Cloned instances missing some options');
     }
 }

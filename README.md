@@ -1,14 +1,13 @@
-PHP Shell Wrapper
-=================
+# PHP Shell Wrapper
 
-[![Build Status](https://travis-ci.org/adambrett/php-shell-wrapper.png?branch=master)](https://travis-ci.org/adambrett/php-shell-wrapper)
+PHP Shell Wrapper is a high level object-oriented wrapper for accessing
+the [program execution functions](http://php.net/exec) in PHP.
 
-PHP Shell Wrapper is a high level object oriented wrapper for accessing the [program execution functions](http://php.net/exec) in PHP.
+Its primary purpose is to abstract away low level program execution functions in
+your application, allowing you to mock PHP Shell Wrapper in your tests, making
+applications which call shell functions easily testable.
 
-Its primary purpose is to abstract away low level program execution functions in your application, allowing you to mock PHP Shell Wrapper in your tests, making applications which call shell functions easily testable.
-
-Installation
-============
+# Installation
 
 Install composer in your project:
 
@@ -20,9 +19,9 @@ Create a `composer.json` file in your project root:
 
 ```json
 {
-    "require": {
-        "adambrett/shell-wrapper": "dev-master"
-    }
+  "require": {
+    "adambrett/shell-wrapper": "dev-master"
+  }
 }
 ```
 
@@ -38,11 +37,9 @@ Add this line to your application's `index.php` file:
 require 'vendor/autoload.php';
 ```
 
-Basic Usage
-===========
+# Basic Usage
 
-Hello World
------------
+## Hello World
 
 Import the required classes into your namespace:
 
@@ -82,12 +79,15 @@ Which would run the command:
 echo 'Hello World'
 ```
 
-Command Builder
----------------
+## Command Builder
 
-Whilst this library is highly object oriented behind the scenes, you may not want to use it that way, what's where the Command Builder comes in.  The command builder constructs a `Command` object behind the scenes, and then constructs the correct class for each method called, so you don't have to worry about it.
+Whilst this library is highly object-oriented behind the scenes, you may not
+want to use it that way, what's where the Command Builder comes in. The command
+builder constructs a `Command` object behind the scenes, and then constructs the
+correct class for each method called, so you don't have to worry about it.
 
-The Command Builder also has a fluent interface for extra syntactical sugar. Here's the above example re-written using the Command Builder:
+The Command Builder also has a fluent interface for extra syntactical sugar.
+Here's the above example re-written using the Command Builder:
 
 ```php
 use AdamBrett\ShellWrapper\Runners\Exec;
@@ -139,14 +139,19 @@ Which would run:
 /usr/bin/jekyll serve --watch
 ```
 
-Runners
--------
+## Runners
 
-Runners are paths directly in to the PHP [program execution functions](http://php.net/exec), and map to them by name exactly.  Runners should all implement `\AdamBrett\ShellWrapper\Runners\Runner`, which means you can type hint on that whenever you need to use a shell and they should then all be interchangeable.
+Runners are paths directly in to the
+PHP [program execution functions](http://php.net/exec), and map to them by name
+exactly. Runners should all implement `\AdamBrett\ShellWrapper\Runners\Runner`,
+which means you can type hint on that whenever you need to use a shell and they
+should then all be interchangeable.
 
-Some runners will also implement `\AdamBrett\ShellWrapper\Runners\ReturnValue`, but only where that is appropriate to the low level function.
+Some runners will also implement `\AdamBrett\ShellWrapper\Runners\ReturnValue`,
+but only where that is appropriate to the low level function.
 
-Some runners (marked *) only emulate command running. This feature useful for testing.
+Some runners (marked *) only emulate command running. This feature useful for
+testing.
 
 Runner    | Returns               | Flush | getOutput | getReturnValue
 ----------|-----------------------|-------|-----------|---------------
@@ -158,10 +163,10 @@ Dry*      | Exit code             |       | x         | x
 Fake*     | Exit code             |       | x         | x
 
 You can use `FakeRunner` in your unit tests to emulate running a command.
-You can use `DryRunner `for debugging purposes, or when your application uses a `--dry-run` type argument and you want to echo the command rather than run it.
+You can use `DryRunner `for debugging purposes, or when your application uses
+a `--dry-run` type argument and you want to echo the command rather than run it.
 
-SubCommands
------------
+## SubCommands
 
 ### Usage
 
@@ -171,7 +176,8 @@ use AdamBrett\ShellWrapper\Command\SubCommand;
 $shell->addSubCommand(new SubCommand($subCommand));
 ```
 
-Sub commands will not be escaped or modified in anyway, they are intended for use like so:
+Sub commands will not be escaped or modified in anyway, they are intended for
+use like so:
 
 ```php
 use AdamBrett\ShellWrapper\Command\Command;
@@ -183,8 +189,7 @@ $shell->addSubCommand(new SubCommand('build'));
 
 Which would run the command `jekyll build`.
 
-Arguments
----------
+## Arguments
 
 ### Usage
 
@@ -194,14 +199,17 @@ use AdamBrett\ShellWrapper\Command\Argument;
 $shell->addArgument(new Argument($name, $value));
 ```
 
-`$value` will be automatically escaped behind the scenes, but `$name` will not, so make sure you never have user input in `$name`, or if you do, escape it yourself.
+`$value` will be automatically escaped behind the scenes, but `$name` will not,
+so make sure you never have user input in `$name`, or if you do, escape it
+yourself.
 
-If you want multiple arguments of the same name, then `$value` can be an array, like so:
+If you want multiple arguments of the same name, then `$value` can be an array,
+like so:
 
 ```php
 use AdamBrett\ShellWrapper\Command\Argument;
 
-$shell->addArgument(new Argument('exclude', ['.git*', 'cache'])); 
+$shell->addArgument(new Argument('exclude', ['.git*', 'cache']));
 ```
 
 Which would result in the following:
@@ -210,8 +218,7 @@ Which would result in the following:
 somecommand --exclude '.git*' --exclude 'cache'
 ```
 
-Flags
------
+## Flags
 
 ### Usage
 
@@ -221,10 +228,10 @@ use AdamBrett\ShellWrapper\Command\Flag;
 $shell->addFlag(new Flag($flag));
 ```
 
-`$flag` will not be escaped, but can be a string rather than a single character, so `new Flag('lla')` is perfectly valid.
+`$flag` will not be escaped, but can be a string rather than a single character,
+so `new Flag('lla')` is perfectly valid.
 
-Params
-------
+## Params
 
 ### Usage
 
@@ -234,13 +241,12 @@ use AdamBrett\ShellWrapper\Command\Param;
 $shell->addParam(new Param($param));
 ```
 
-`$param` will be automatically escaped behind the scenes, but will otherwise be un-altered.
+`$param` will be automatically escaped behind the scenes, but will otherwise be
+un-altered.
 
+# Requirements
 
-Requirements
-============
-
-  * PHP >=5.4
+* PHP >= 8.1
 
 Contributing
 ============
@@ -248,35 +254,26 @@ Contributing
 Pull Requests
 -------------
 
-  1. Fork the php-shell-wrapper repository
-  2. Create a new branch for each feature or improvement
-  3. Send a pull request from each feature branch to the **develop** branch
+1. Fork the php-shell-wrapper repository
+2. Create a new branch for each feature or improvement
+3. Send a pull request from each feature branch to the **master** branch
 
 Style Guide
 -----------
 
-This package is compliant with [PSR-0][], [PSR-1][], and [PSR-2][]. If you
-notice compliance oversights, please send a patch via pull request.
+This package is compliant with [PSR-4][] and [PSR-12][]. If you notice
+compliance oversights, please send a patch via pull request.
 
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
-[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[PSR-4]: https://www.php-fig.org/psr/psr-4/
 
-Tests
------
+[PSR-12]: https://www.php-fig.org/psr/psr-12/
 
-The library is developed using test driven development.  All pull requests should be accompanied by passing unit tests with 100% coverage.  [phpunit][] is used for testing and [mockery][] is used for mocks.  [faker][] is available as a random data generator if required.
+## Tests
+
+The library is developed using test driven development. All pull requests should
+be accompanied by passing unit tests with 100% coverage. [phpunit][] is used for
+testing and [mockery][] is used for mocks.
 
 [phpunit]: http://phpunit.de/manual/current/en/index.html
+
 [mockery]: https://github.com/padraic/mockery
-[faker]: https://github.com/fzaninotto/Faker
-
-Creating Builds
----------------
-
-Some build tools are included via composer if required, you can run them using .  `./vendor/bin/phing` from the root of the project.  The output will be stored in `./build` and will include code coverage and code browser output.  Inspect the contents of `build.xml` to see what's happening underneath.
-
-License
-=======
-
-php-shell-wrapper is licensed under the BSD-3-Clause License - see the LICENSE file for details

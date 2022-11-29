@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Command;
 
 use AdamBrett\ShellWrapper\Command\Param;
+use PHPUnit\Framework\TestCase;
 
-class ParamTest extends \PHPUnit_Framework_TestCase
+class ParamTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -15,12 +18,12 @@ class ParamTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $param = new Param('test');
-        $this->assertEquals("'test'", (string) $param, 'Param should cast to a string');
+        $this->assertEquals("'test'", (string)$param, 'Param should cast to a string');
     }
 
     public function testEscapesParam()
     {
         $param = new Param('&&');
-        $this->assertEquals("'&&'", (string) $param, 'Param should be escaped');
+        $this->assertEquals("'&&'", (string)$param, 'Param should be escaped');
     }
 }

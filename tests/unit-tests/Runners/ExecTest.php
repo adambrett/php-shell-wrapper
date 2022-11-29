@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Runners;
 
-use AdamBrett\ShellWrapper\Runners\Exec;
 use AdamBrett\ShellWrapper\Command;
 use AdamBrett\ShellWrapper\ExitCodes;
+use AdamBrett\ShellWrapper\Runners\Exec;
+use PHPUnit\Framework\TestCase;
 
-class ExecTest extends \PHPUnit_Framework_TestCase
+class ExecTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -27,7 +30,7 @@ class ExecTest extends \PHPUnit_Framework_TestCase
         $shell->run(new Command('ls'));
 
         $this->assertEquals(ExitCodes::SUCCESS, $shell->getReturnValue(), 'The return should be a success');
-        $this->assertInternalType('integer', $shell->getReturnValue(), 'The should be a return value');
+        $this->assertIsInt($shell->getReturnValue(), 'The should be a return value');
 
         $shell->run(new Command('/dev/null 2>/dev/null'));
         $this->assertEquals(ExitCodes::PERMISSION_ERROR, $shell->getReturnValue(), 'The return should be an error');

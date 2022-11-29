@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Command\Collections;
 
-use AdamBrett\ShellWrapper\Command\Param;
 use AdamBrett\ShellWrapper\Command\Collections\Params as ParamList;
+use AdamBrett\ShellWrapper\Command\Param;
+use PHPUnit\Framework\TestCase;
 
-class ParamsTest extends \PHPUnit_Framework_TestCase
+class ParamsTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -17,7 +20,7 @@ class ParamsTest extends \PHPUnit_Framework_TestCase
     {
         $paramList = new ParamList();
         $paramList->addParam(new Param('test'));
-        $this->assertEquals("'test'", (string) $paramList, 'ParamList should cast to a string');
+        $this->assertEquals("'test'", (string)$paramList, 'ParamList should cast to a string');
     }
 
     public function testMultipleParams()
@@ -25,7 +28,7 @@ class ParamsTest extends \PHPUnit_Framework_TestCase
         $paramList = new ParamList();
         $paramList->addParam(new Param('hello'));
         $paramList->addParam(new Param('world'));
-        $this->assertEquals("'hello' 'world'", (string) $paramList, 'ParamList should have multiple params');
+        $this->assertEquals("'hello' 'world'", (string)$paramList, 'ParamList should have multiple params');
     }
 
     public function testDuplicateParams()
@@ -33,7 +36,7 @@ class ParamsTest extends \PHPUnit_Framework_TestCase
         $paramList = new ParamList();
         $paramList->addParam(new Param('test'));
         $paramList->addParam(new Param('test'));
-        $this->assertEquals("'test' 'test'", (string) $paramList, 'ParamList should allow duplicates');
+        $this->assertEquals("'test' 'test'", (string)$paramList, 'ParamList should allow duplicates');
     }
 
     public function testClone()
@@ -46,10 +49,10 @@ class ParamsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "'test'",
-            (string) $paramList1,
+            (string)$paramList1,
             'Original collection must not be affect by cloned instances'
         );
 
-        $this->assertEquals("'test' 'test'", (string) $paramList2, 'Cloned instances missing some options');
+        $this->assertEquals("'test' 'test'", (string)$paramList2, 'Cloned instances missing some options');
     }
 }

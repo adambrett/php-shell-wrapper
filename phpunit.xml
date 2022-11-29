@@ -13,7 +13,7 @@
 
     <listeners>
         <!-- close any expectations, report issues -->
-        <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
+        <listener class="\Mockery\Adapter\Phpunit\TestListener" />
     </listeners>
 
     <filter>

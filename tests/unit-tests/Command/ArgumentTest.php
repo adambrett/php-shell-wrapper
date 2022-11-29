@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Command;
 
 use AdamBrett\ShellWrapper\Command\Argument;
+use PHPUnit\Framework\TestCase;
 
-class ArgumentTest extends \PHPUnit_Framework_TestCase
+class ArgumentTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -15,13 +18,13 @@ class ArgumentTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $argument = new Argument('test', 'value');
-        $this->assertEquals("--test 'value'", (string) $argument, 'Argument should cast to a string');
+        $this->assertEquals("--test 'value'", (string)$argument, 'Argument should cast to a string');
     }
 
     public function testEscapesArgValue()
     {
         $argument = new Argument('test', '&&');
-        $this->assertEquals("--test '&&'", (string) $argument, 'Argument should be escaped');
+        $this->assertEquals("--test '&&'", (string)$argument, 'Argument should be escaped');
     }
 
     public function testGetName()
@@ -33,12 +36,12 @@ class ArgumentTest extends \PHPUnit_Framework_TestCase
     public function testEmptyArgument()
     {
         $argument = new Argument('test');
-        $this->assertEquals('--test', (string) $argument, 'Valueless arguments should be allowed');
+        $this->assertEquals('--test', (string)$argument, 'Valueless arguments should be allowed');
     }
 
     public function testMultipleOfSameName()
     {
-        $param = new Argument('test', array('value1', 'value2'));
-        $this->assertEquals("--test 'value1' --test 'value2'", (string) $param, 'Mutiple arguments should be allowed');
+        $param = new Argument('test', ['value1', 'value2']);
+        $this->assertEquals("--test 'value1' --test 'value2'", (string)$param, 'Mutiple arguments should be allowed');
     }
 }
