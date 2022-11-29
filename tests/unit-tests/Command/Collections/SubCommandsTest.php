@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Command\Collections;
 
-use AdamBrett\ShellWrapper\Command\SubCommand;
 use AdamBrett\ShellWrapper\Command\Collections\SubCommands as SubCommandList;
+use AdamBrett\ShellWrapper\Command\SubCommand;
+use PHPUnit\Framework\TestCase;
 
-class SubCommandsTest extends \PHPUnit_Framework_TestCase
+class SubCommandsTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -17,7 +20,7 @@ class SubCommandsTest extends \PHPUnit_Framework_TestCase
     {
         $subCommandList = new SubCommandList();
         $subCommandList->addSubCommand(new SubCommand('test'));
-        $this->assertEquals('test', (string) $subCommandList, 'SubCommandList should cast to a string');
+        $this->assertEquals('test', (string)$subCommandList, 'SubCommandList should cast to a string');
     }
 
     public function testMultipleSubCommands()
@@ -25,7 +28,7 @@ class SubCommandsTest extends \PHPUnit_Framework_TestCase
         $subCommandList = new SubCommandList();
         $subCommandList->addSubCommand(new SubCommand('hello'));
         $subCommandList->addSubCommand(new SubCommand('world'));
-        $this->assertEquals('hello world', (string) $subCommandList, 'SubCommandList should have multiple params');
+        $this->assertEquals('hello world', (string)$subCommandList, 'SubCommandList should have multiple params');
     }
 
     public function testDuplicateSubCommands()
@@ -33,7 +36,7 @@ class SubCommandsTest extends \PHPUnit_Framework_TestCase
         $subCommandList = new SubCommandList();
         $subCommandList->addSubCommand(new SubCommand('test'));
         $subCommandList->addSubCommand(new SubCommand('test'));
-        $this->assertEquals('test test', (string) $subCommandList, 'SubCommandList should allow duplicates');
+        $this->assertEquals('test test', (string)$subCommandList, 'SubCommandList should allow duplicates');
     }
 
     public function testClone()
@@ -46,9 +49,9 @@ class SubCommandsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'test',
-            (string) $subCommandList1,
+            (string)$subCommandList1,
             'Original collection must not be affect by cloned instances'
         );
-        $this->assertEquals('test test', (string) $subCommandList2, 'Cloned instances missing some options');
+        $this->assertEquals('test test', (string)$subCommandList2, 'Cloned instances missing some options');
     }
 }

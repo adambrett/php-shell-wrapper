@@ -1,23 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Integration\Command;
 
-use AdamBrett\ShellWrapper\Runners\Exec;
 use AdamBrett\ShellWrapper\Command\Builder as CommandBuilder;
+use AdamBrett\ShellWrapper\Runners\Exec;
+use PHPUnit\Framework\TestCase;
 
-use PHPUnit_Framework_TestCase;
-
-class BuilderTest extends PHPUnit_Framework_TestCase
+class BuilderTest extends TestCase
 {
-    protected $testFile;
+    protected string $testFile;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testFile = __DIR__ . '/.testFile';
         $this->cleanUp();
     }
 
-    public function tearDown()
+    protected function cleanUp()
+    {
+        if (file_exists($this->testFile)) {
+            unlink($this->testFile);
+        }
+    }
+
+    public function tearDown(): void
     {
         $this->cleanUp();
     }
@@ -33,12 +41,5 @@ class BuilderTest extends PHPUnit_Framework_TestCase
             file_exists($this->testFile),
             sprintf('%s should have been created', $this->testFile)
         );
-    }
-
-    protected function cleanUp()
-    {
-        if (file_exists($this->testFile)) {
-            unlink($this->testFile);
-        }
     }
 }

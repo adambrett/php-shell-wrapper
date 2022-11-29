@@ -1,20 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Runners;
 
 use AdamBrett\ShellWrapper\Command\CommandInterface;
 
 class Passthru implements Runner, ReturnValue
 {
-    protected $returnValue;
+    protected int|null $returnValue;
 
-    public function run(CommandInterface $command)
+    public function run(CommandInterface $command): ?bool
     {
         $this->returnValue = null;
-        return passthru((string) $command, $this->returnValue);
+        return passthru((string)$command, $this->returnValue);
     }
 
-    public function getReturnValue()
+    public function getReturnValue(): ?int
     {
         return $this->returnValue;
     }

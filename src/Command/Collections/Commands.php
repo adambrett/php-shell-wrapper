@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command\Collections;
 
+use AdamBrett\ShellWrapper\Command\CommandInterface;
 use InvalidArgumentException;
 
-use AdamBrett\ShellWrapper\Command\CommandInterface;
-
-class Command implements CommandInterface
+class Commands implements CommandInterface
 {
-    const C_AND = '&&';
-    const C_OR = '||';
+    public const C_AND = '&&';
+    public const C_OR = '||';
 
-    private $commands;
-    private $type;
+    private array $commands;
+    private mixed $type;
 
     public function __construct(array $commands, $type = self::C_AND)
     {
@@ -28,6 +29,6 @@ class Command implements CommandInterface
 
     public function __toString()
     {
-        return (string) implode(" $this->type ", $this->commands);
+        return implode(" $this->type ", $this->commands);
     }
 }

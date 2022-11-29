@@ -1,15 +1,16 @@
 <?php
 
-namespace AdamBrett\ShellWrapper\Tests\Runners;
+declare(strict_types=1);
 
+namespace AdamBrett\ShellWrapper\Tests\Runners;
 
 use AdamBrett\ShellWrapper\Command;
 use AdamBrett\ShellWrapper\ExitCodes;
 use AdamBrett\ShellWrapper\Runners\FakeRunner;
+use PHPUnit\Framework\TestCase;
 
-class FakeRunnerTest extends \PHPUnit_Framework_TestCase
+class FakeRunnerTest extends TestCase
 {
-
     public function testExecution()
     {
         $runner = new FakeRunner();

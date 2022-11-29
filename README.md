@@ -201,7 +201,7 @@ If you want multiple arguments of the same name, then `$value` can be an array, 
 ```php
 use AdamBrett\ShellWrapper\Command\Argument;
 
-$shell->addArgument(new Argument('exclude', ['.git*', 'cache'])); 
+$shell->addArgument(new Argument('exclude', ['.git*', 'cache']));
 ```
 
 Which would result in the following:

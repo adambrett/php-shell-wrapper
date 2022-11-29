@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Runners;
 
-use AdamBrett\ShellWrapper\Runners\ShellExec;
 use AdamBrett\ShellWrapper\Command;
-use AdamBrett\ShellWrapper\ExitCodes;
+use AdamBrett\ShellWrapper\Runners\ShellExec;
+use PHPUnit\Framework\TestCase;
 
-class ShellExecTest extends \PHPUnit_Framework_TestCase
+class ShellExecTest extends TestCase
 {
     public function testCanCreateInstance()
     {

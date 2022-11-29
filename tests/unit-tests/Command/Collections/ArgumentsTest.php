@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Tests\Command\Collections;
 
 use AdamBrett\ShellWrapper\Command\Argument;
 use AdamBrett\ShellWrapper\Command\Collections\Arguments as ArgumentList;
+use PHPUnit\Framework\TestCase;
 
-class ArgumentsTest extends \PHPUnit_Framework_TestCase
+class ArgumentsTest extends TestCase
 {
     public function testCanCreateInstance()
     {
@@ -17,7 +20,7 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
     {
         $argumentList = new ArgumentList();
         $argumentList->addArgument(new Argument('test', 'value'));
-        $this->assertEquals("--test 'value'", (string) $argumentList, 'ArgumentList should cast to a string');
+        $this->assertEquals("--test 'value'", (string)$argumentList, 'ArgumentList should cast to a string');
     }
 
     public function testMultipleArguments()
@@ -27,7 +30,7 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
         $argumentList->addArgument(new Argument('test2', 'value2'));
         $this->assertEquals(
             "--test 'value' --test2 'value2'",
-            (string) $argumentList,
+            (string)$argumentList,
             'ArgumentList should have multiple arguments'
         );
     }
@@ -37,7 +40,7 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
         $argumentList = new ArgumentList();
         $argumentList->addArgument(new Argument('test', 'value'));
         $argumentList->addArgument(new Argument('test', 'value'));
-        $this->assertEquals("--test 'value'", (string) $argumentList, 'ArgumentList should remove duplicates');
+        $this->assertEquals("--test 'value'", (string)$argumentList, 'ArgumentList should remove duplicates');
     }
 
     public function testOverwriteArguments()
@@ -45,7 +48,7 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
         $argumentList = new ArgumentList();
         $argumentList->addArgument(new Argument('test', 'value'));
         $argumentList->addArgument(new Argument('test', 'value2'));
-        $this->assertEquals("--test 'value2'", (string) $argumentList, 'ArgumentList should overwrite new values');
+        $this->assertEquals("--test 'value2'", (string)$argumentList, 'ArgumentList should overwrite new values');
     }
 
     public function testClone()
@@ -59,13 +62,13 @@ class ArgumentsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "--test 'value'",
-            (string) $argumentList1,
+            (string)$argumentList1,
             'Original collection must not be affect by cloned instances'
         );
 
         $this->assertEquals(
             "--test 'value2' --test2 'value'",
-            (string) $argumentList2,
+            (string)$argumentList2,
             'Cloned instances missing some options'
         );
     }

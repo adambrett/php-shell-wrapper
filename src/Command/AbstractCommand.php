@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command;
 
 abstract class AbstractCommand implements CommandInterface
 {
-    protected $command;
+    protected string $command;
 
     public function __construct($command)
     {

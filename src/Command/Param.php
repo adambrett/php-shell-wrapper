@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command;
 
 class Param
 {
-    protected $param;
+    protected string $param;
 
     public function __construct($param)
     {

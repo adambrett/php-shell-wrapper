@@ -1,30 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdamBrett\ShellWrapper\Command\Collections;
 
 use AdamBrett\ShellWrapper\Command\Flag;
 
 class Flags
 {
-    protected $flags = array();
+    protected array $flags = [];
 
     public function __toString()
     {
         return join(' ', $this->flags);
     }
 
-    public function addFlag(Flag $flag)
+    public function addFlag(Flag $flag): void
     {
-        $this->flags[(string) $flag] = $flag;
+        $this->flags[(string)$flag] = $flag;
     }
 
     public function __clone()
     {
-        $clonedFlagsList = array();
+        $clonedFlags = [];
         foreach ($this->flags as $flag) {
-            $clonedFlagsList[] = clone $flag;
+            $clonedFlags[] = clone $flag;
         }
 
-        $this->flags = $clonedFlagsList;
+        $this->flags = $clonedFlags;
     }
 }

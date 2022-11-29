@@ -8,19 +8,13 @@
             "email": "adam@adambrett.co.uk"
         }
     ],
-    "require": {
-
-    },
     "require-dev": {
-        "squizlabs/php_codesniffer": "*@dev",
-        "pdepend/pdepend": "*@dev",
-        "phpmd/phpmd": "*@dev",
-        "sebastian/phpcpd": "*@dev",
-        "phploc/phploc": "*@dev",
-        "covex-nn/phpcb": "*@dev",
-        "phpunit/phpunit": "*@dev",
-        "mockery/mockery": "*@dev",
-        "fzaninotto/faker": "*@dev"
+        "phpunit/phpunit": "^9",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpmd/phpmd": "@stable",
+        "phploc/phploc": "^7",
+        "sebastian/phpcpd": "^6",
+        "mockery/mockery": "^1.5"
     },
     "autoload": {
         "psr-4": {
