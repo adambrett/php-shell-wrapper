@@ -9,32 +9,10 @@ applications which call shell functions easily testable.
 
 # Installation
 
-Install composer in your project:
+Using [composer](https://getcomposer.org/):
 
 ```bash
-curl -s https://getcomposer.org/installer | php
-```
-
-Create a `composer.json` file in your project root:
-
-```json
-{
-  "require": {
-    "adambrett/shell-wrapper": "dev-master"
-  }
-}
-```
-
-Install via composer:
-
-```bash
-php composer.phar install
-```
-
-Add this line to your application's `index.php` file:
-
-```php
-require 'vendor/autoload.php';
+composer require adambrett/shell-wrapper '~1.0'
 ```
 
 # Basic Usage
