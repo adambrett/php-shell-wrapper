@@ -20,7 +20,7 @@ Create a `composer.json` file in your project root:
 ```json
 {
   "require": {
-    "adambrett/shell-wrapper": "dev-master"
+    "adambrett/shell-wrapper": "~1.0"
   }
 }
 ```
