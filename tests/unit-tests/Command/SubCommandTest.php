@@ -12,7 +12,7 @@ class SubCommandTest extends TestCase
     public function testCanCreateInstance()
     {
         $command = new SubCommand('ls');
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\SubCommand', $command);
+        $this->assertInstanceOf(SubCommand::class, $command);
     }
 
     public function testToString()

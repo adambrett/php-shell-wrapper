@@ -13,7 +13,7 @@ class ParamsTest extends TestCase
     public function testCanCreateInstance()
     {
         $paramList = new ParamList();
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Params', $paramList);
+        $this->assertInstanceOf(ParamList::class, $paramList);
     }
 
     public function testToString()

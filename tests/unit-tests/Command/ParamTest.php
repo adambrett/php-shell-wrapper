@@ -12,7 +12,7 @@ class ParamTest extends TestCase
     public function testCanCreateInstance()
     {
         $param = new Param('test');
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Param', $param);
+        $this->assertInstanceOf(Param::class, $param);
     }
 
     public function testToString()

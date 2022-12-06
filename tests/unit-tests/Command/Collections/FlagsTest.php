@@ -13,7 +13,7 @@ class FlagsTest extends TestCase
     public function testCanCreateInstance()
     {
         $flagList = new FlagList();
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Flags', $flagList);
+        $this->assertInstanceOf(FlagList::class, $flagList);
     }
 
     public function testToString()

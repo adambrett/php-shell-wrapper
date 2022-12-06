@@ -14,7 +14,7 @@ class CommandTest extends TestCase
     {
         $commandsArray = [];
         $commands = new Commands($commandsArray);
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Commands', $commands);
+        $this->assertInstanceOf(Commands::class, $commands);
     }
 
     public function testToStringAnd()
