@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace AdamBrett\ShellWrapper;
 
-use LogicException;
-
 class ExitCodes
 {
     public const SUCCESS = 0;
@@ -25,9 +23,8 @@ class ExitCodes
 
     public const OUT_OF_RANGE = 255;
 
-    public function __construct()
+    final private function __construct()
     {
-        throw new LogicException(__CLASS__ . ' is static and should not be instantiated');
     }
 
     /**

@@ -9,13 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class ExitCodesTest extends TestCase
 {
-    public function testCannotCreateInstance()
+    public function testCannotCreateInstance(): void
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(\Error::class);
         new ExitCodes();
     }
 
-    public function testGetDescriptionReturnsString()
+    public function testGetDescriptionReturnsString(): void
     {
         $this->assertIsString(
             ExitCodes::getDescription(ExitCodes::SUCCESS),
@@ -43,7 +43,7 @@ class ExitCodesTest extends TestCase
         );
     }
 
-    public function test3To125AreUnknownOrCustom()
+    public function test3To125AreUnknownOrCustom(): void
     {
         $this->assertEquals(
             'Unknown or custom error',
@@ -61,7 +61,7 @@ class ExitCodesTest extends TestCase
         );
     }
 
-    public function testInvalidExitArgRange()
+    public function testInvalidExitArgRange(): void
     {
         $this->assertEquals(
             'Exit takes only integer args in the range 0 - 255',
@@ -74,7 +74,7 @@ class ExitCodesTest extends TestCase
         );
     }
 
-    public function testFatalErrorRange()
+    public function testFatalErrorRange(): void
     {
         $this->assertEquals(
             'Fatal error signal "9"',
