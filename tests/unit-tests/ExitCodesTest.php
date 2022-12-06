@@ -11,7 +11,7 @@ class ExitCodesTest extends TestCase
 {
     public function testCannotCreateInstance()
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(\Error::class);
         new ExitCodes();
     }
 
