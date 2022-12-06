@@ -13,7 +13,7 @@ class ArgumentsTest extends TestCase
     public function testCanCreateInstance()
     {
         $argumentList = new ArgumentList();
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\Collections\Arguments', $argumentList);
+        $this->assertInstanceOf(ArgumentList::class, $argumentList);
     }
 
     public function testToString()

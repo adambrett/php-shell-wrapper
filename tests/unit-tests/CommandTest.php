@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AdamBrett\ShellWrapper\Tests;
 
 use AdamBrett\ShellWrapper\Command;
+use AdamBrett\ShellWrapper\Command\AbstractCommand;
 use AdamBrett\ShellWrapper\Command\Argument;
 use AdamBrett\ShellWrapper\Command\Flag;
 use AdamBrett\ShellWrapper\Command\Param;
@@ -16,31 +17,31 @@ class CommandTest extends TestCase
     public function testCanCreateInstance()
     {
         $command = new Command('ls');
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command\AbstractCommand', $command);
-        $this->assertInstanceOf('AdamBrett\ShellWrapper\Command', $command);
+        $this->assertInstanceOf(AbstractCommand::class, $command);
+        $this->assertInstanceOf(Command::class, $command);
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $command = new Command('ls');
         $this->assertEquals('ls', (string)$command, 'Command should cast to a string');
     }
 
-    public function testCanHaveSubCommand()
+    public function testCanHaveSubCommand(): void
     {
         $command = new Command('ls');
         $command->addSubCommand(new SubCommand('ls'));
         $this->assertEquals('ls ls', (string)$command, 'Command should have sub command');
     }
 
-    public function testCanAddArgument()
+    public function testCanAddArgument(): void
     {
         $command = new Command('ls');
         $command->addArgument(new Argument('test', 'value'));
         $this->assertEquals("ls --test 'value'", (string)$command, 'Command should have arguments');
     }
 
-    public function testCanAddMultipleArguments()
+    public function testCanAddMultipleArguments(): void
     {
         $command = new Command('ls');
         $command->addArgument(new Argument('test', 'value'));
@@ -52,7 +53,7 @@ class CommandTest extends TestCase
         );
     }
 
-    public function testCanOverrideArguments()
+    public function testCanOverrideArguments(): void
     {
         $command = new Command('ls');
         $command->addArgument(new Argument('test', 'value'));
@@ -60,14 +61,14 @@ class CommandTest extends TestCase
         $this->assertEquals("ls --test 'value2'", (string)$command, 'Arguments should be overwritten');
     }
 
-    public function testCanAddFlag()
+    public function testCanAddFlag(): void
     {
         $command = new Command('ls');
         $command->addFlag(new Flag('ll'));
         $this->assertEquals('ls -ll', (string)$command, 'Command should have flags');
     }
 
-    public function testCanAddMultipleFlag()
+    public function testCanAddMultipleFlag(): void
     {
         $command = new Command('ls');
         $command->addFlag(new Flag('l'));
@@ -75,14 +76,14 @@ class CommandTest extends TestCase
         $this->assertEquals('ls -l -a', (string)$command, 'Command should have multiple flags');
     }
 
-    public function testCanAddParam()
+    public function testCanAddParam(): void
     {
         $command = new Command('ls');
         $command->addParam(new Param('/'));
         $this->assertEquals("ls '/'", (string)$command, 'Command should have an option');
     }
 
-    public function testCanAddMultipleParams()
+    public function testCanAddMultipleParams(): void
     {
         $command = new Command('ls');
         $command->addParam(new Param('/srv'));
@@ -90,7 +91,7 @@ class CommandTest extends TestCase
         $this->assertEquals("ls '/srv' '/var'", (string)$command, 'Command should have multiple options');
     }
 
-    public function testClone()
+    public function testClone(): void
     {
         $command1 = new Command('ls');
         $command1->addParam(new Param('/srv'));
