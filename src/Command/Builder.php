@@ -26,7 +26,7 @@ class Builder implements CommandInterface
         return $this;
     }
 
-    public function addArgument(string $name, string $value = null): static
+    public function addArgument(string $name, string|array $value = null): static
     {
         $this->command->addArgument(new Argument($name, $value));
         return $this;
