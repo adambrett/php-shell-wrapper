@@ -104,4 +104,15 @@ class BuilderTest extends TestCase
 
         $this->assertEquals("ls '/srv' '/var'", (string)$command, 'Command should have multiple options');
     }
+
+    public function testCanAddArrayArgument(): void
+    {
+        $command = new Command('ls');
+        $command->addArgument('test', ['value', 'value2']);
+        $this->assertEquals(
+            "ls --test 'value' --test 'value2'",
+            (string) $command,
+            'Command should have multiple --test arguments'
+        );
+    }
 }
